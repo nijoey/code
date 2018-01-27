@@ -1,4 +1,4 @@
-// Now I am going to write only the function and not the whole code for Binary Tree
+// Just writing the function and not the whole code for Binary Tree
 
 public boolean areIdentical(TreeNode root1, TreeNode root2){
     if(root1==null && root2==null){
