@@ -1,0 +1,22 @@
+// Just writing the function and not the whole code for Binary Tree
+
+public Tree invert(Tree root){
+    if(root==null){
+        return null;
+    }
+
+    Tree leftSub = null;
+    Tree rightSub = null;
+
+    if(root.left!=null){
+        leftSub=root.left;
+    }
+    if(root.right!=null){
+        rightSub=root.right;
+    }
+
+    root.left=rightSub;
+    root.right=leftSub;
+
+    return root;
+}
