@@ -1,0 +1,20 @@
+// Just writing the function and not the whole code for SLL
+
+public void removeDup(Node head){
+    Set<Integer> checkSet = new HashSet<>();
+    Node prev = head;
+    Node current = prev.next;
+    checkSet.add(prev.data);
+
+    while(current!=null){
+        if(!checkSet.contains(current.data)){
+            checkSet.add(current.data);
+            current = current.next;
+            prev=prev.next;
+        }
+        else{
+            current=current.next;
+            prev.next=current;
+        }
+    }
+}
