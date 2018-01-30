@@ -9,10 +9,10 @@ public Tree invert(Tree root){
     Tree rightSub = null;
 
     if(root.left!=null){
-        leftSub=root.left;
+        leftSub=invert(root.left);
     }
     if(root.right!=null){
-        rightSub=root.right;
+        rightSub=invert(root.right);
     }
 
     root.left=rightSub;
