@@ -1,0 +1,42 @@
+class Solution {
+    public int totalFruit(int[] tree) {
+    // Algorithm 
+    /*
+        1. First and foremost we need to check if the tree is null or has 0 elements, you can avoid this step by asking the interviewer. 
+        2. As we need to track down only a certain number of trees which are unique to that tree set, we define a map which can hold the element and the count of that element. 
+        3. Define a max value = 1 and two pointers i and j as we are using sliding window algo to solve this problem.
+        4. Loop through the array till the end and check for map size is less than or equeal to k.
+        5. keep adding the elements int the array and incrementing the j value. 
+        6. check for the map size to be greater than equal to 2 because we need to check to that element size only
+        7. Define an temp val and assign the max value to it, we need to do this becasue we need to mind the min value that needs to be taken out of the hashmap. 
+        8. Compare that value to the values in map and assign the min to that temp variable.
+        9. Increment the i pointer to that min value +1 so that our sliding window will start from that position going ahead.
+        10. Remove that element from the map. 
+        11. Assign a new max value to the max variable comparing the difference between the twom pointers and previous max value. 
+        12. Return the max value. 
+    */
+        if(tree.length == 0 || tree == null)
+            return 0;
+        Map<Integer, Integer> map = new HashMap<>();
+        int max = 1;
+        int i=0;
+        int j=0;
+        
+        while(j<tree.length){
+            if(map.size()<=2){
+                map.put(tree[j],j++);
+            }
+            
+            if(map.size()>2){
+                int min = tree.length;
+                for(int value:map.values()){
+                    min = Math.min(min,value);
+                }
+                i = min+1;
+                map.remove(tree[min]);
+            }
+            max = Math.max(max,j-i);
+        }
+        return max;
+    }
+}
