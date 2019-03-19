@@ -1,0 +1,75 @@
+This problem was asked by Amazon.
+
+Given a N by M matrix of numbers, print out the matrix in a clockwise spiral.
+
+For example, given the following matrix:
+
+[[1,  2,  3,  4,  5],
+ [6,  7,  8,  9,  10],
+ [11, 12, 13, 14, 15],
+ [16, 17, 18, 19, 20]]
+You should print out the following:
+
+1
+2
+3
+4
+5
+10
+15
+20
+19
+18
+17
+16
+11
+6
+7
+8
+9
+14
+13
+12
+
+
+
+public void spiralMatrix(int[][] matrix){
+  if(matrix.length==0 || matrix[0].length == 0)
+    System.out.println("Empty Matrix");
+ 
+  int left = 0;
+  int top = 0;
+  int right = matrix[0].length;
+  int bottom = matrix.length;
+  
+  while(true){
+    for(int i= left; i<= right ;i++){
+      System.out.println(matrix[top][i]);
+    }
+    top++;
+    if(top>bottom || left>right){
+      break;
+    }
+    for(int i= top ; i<=bottom; i++){
+      System.out.println(matrix[i][right]);
+    }
+    right--;
+    if(top>bottom || left>right){
+      break;
+    }
+    for(int i=right;i>=left;i--){
+      System.out.println(matrix[bottom][i]);
+    }
+    bottom--;
+    if(top>bottom || left>right){
+      break;
+    }
+    for(int i=bottom;i>=top;i--){
+      System.out.println(matrix[i][left]);
+    }
+    left--
+     if(top>bottom || left>right){
+      break;
+    }
+  }
+} 
