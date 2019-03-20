@@ -1,0 +1,51 @@
+Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST.
+
+Calling next() will return the next smallest number in the BST.
+
+Example:
+
+BSTIterator iterator = new BSTIterator(root);
+iterator.next();    // return 3
+iterator.next();    // return 7
+iterator.hasNext(); // return true
+iterator.next();    // return 9
+iterator.hasNext(); // return true
+iterator.next();    // return 15
+iterator.hasNext(); // return true
+iterator.next();    // return 20
+iterator.hasNext(); // return false
+
+
+
+/*Algorithm
+        1.Use a stack to go through the tree and save all the left nodes of them cuz
+          when called next we want min to return. 
+        2.Write a function pushAll() that will push all the elements on the left subtree
+        3.Call pushAll() with the root node in the constructor so all the elements are in stack
+        4.For hasNext() simply return the boolean checking if the !stack.isEmpty();
+        5.For next() we need to pop the element from the stack and push all the right elements from that temp node
+          to stack to get all the right subtree's left nodes in stack. 
+        6.Return the temp value.
+    */
+    
+
+class BSTIterator{
+  Stack<TreeNode> stk = new Stack<>();
+  public BSTIterator(TreeNode root){
+    pushAll(root);
+  }
+  
+  public int next(){
+    TreeNode temp = stk.pop();
+    pushAll(temp.right);
+    return temp.val;
+  }
+  
+  public boolean hasNext(){
+    return !stk.isEmpty();
+  }
+  
+  public pushAll(TreeNode node){
+    for(;node!=null;stk.push(node);node=npde.left);
+  }
+}
